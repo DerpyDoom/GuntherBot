@@ -77,7 +77,7 @@ function ListSongs() {
   });
 }
 
-function AddToQueue(song, username) {
+function AddToQueue(username, song) {
   let con = mysql.createConnection(config);
 
   con.connect(function(err) {
