@@ -1,0 +1,28 @@
+{
+  "name": "Gunther",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "add": "^2.0.6",
+    "bootstrap": "^4.6.0",
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "homeassistant": "^0.2.0",
+    "jquery": "^3.5.1",
+    "lowdb": "^1.0.0",
+    "mariadb": "^2.5.2",
+    "mysql": "^2.18.1",
+    "or": "^0.2.0",
+    "raspberrypi-liquid-crystal": "^1.15.0",
+    "tmi.js": "^1.7.1",
+    "yarn": "^1.22.10"
+  }
+}

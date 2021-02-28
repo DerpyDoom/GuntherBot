@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="refresh" content="5" >
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap" rel="stylesheet">
+    <title>Main View - Günther SR</title>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="public/js/dbconnector.js"></script>
+  </head>
+  <body style="background-color: #13161b;">
+    <div class="jumbotron vertical-center text-white text-center" style="margin-bottom: 0px; background-color: #13161b; border-bottom-style: solid; padding-top: 10px !important; padding-bottom: 10px !important; border-radius: 0 !important; border-width: 1px; border-color: red;">
+      <h1 style="font-family: 'Rajdhani', sans-serif;" class="display-4">Aktuelle Queue</h1>
+    </div>
+    <div class="container">
+       <div class="row text-white" id="main" style="margin-top: 15px;">
+         <script>
+           $.getJSON("http://192.168.1.61:5000/songs", function( data ){
+             var items = [];
+             $.each( data, function( key, val ) {
+               $('#main').append('<div class="col-md-10 text-center" style="margin-bottom: 10px; font-family: \'Rajdhani\', sans-serif; background-color: #20252d; border-bottom-style: solid; border-width: 1px; border-color: red;">' +
+                                   '<h4 style="margin-bottom: 0px;">' + val.From + '</h4>' +
+                                   '<p style="margin-bottom: 0px;">' + val.Song + '</p>' +
+                                 '</div>' + 
+                                 '<div class="col-md-2 text-center center">' + 
+				   '<a role="button" class="btn btn-danger btn-block" href="http://192.168.1.61:5000/admin/remove?id=' + val.Id + '" stlye="height: 20px !important;">Eintrag Entfernen</a>' + 
+                                 '</div>');
+             });
+           });
+         </script>
+       </div>
+    </div>
+  </body>
+</html>
