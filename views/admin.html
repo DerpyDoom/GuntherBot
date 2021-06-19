@@ -25,7 +25,7 @@
     <div class="container">
        <div class="row text-white" id="main" style="margin-top: 15px;">
          <script>
-           $.getJSON("http://192.168.1.61:5000/songs", function( data ){
+           $.getJSON("http://192.168.1.100:5000/songs", function( data ){
              var items = [];
              $.each( data, function( key, val ) {
                $('#main').append('<div class="col-md-10 text-center" style="margin-bottom: 10px; font-family: \'Rajdhani\', sans-serif; background-color: #20252d; border-bottom-style: solid; border-width: 1px; border-color: red;">' +
@@ -33,7 +33,7 @@
                                    '<p style="margin-bottom: 0px;">' + val.Song + '</p>' +
                                  '</div>' + 
                                  '<div class="col-md-2 text-center center">' + 
-				   '<a role="button" class="btn btn-danger btn-block" href="http://192.168.1.61:5000/admin/remove?id=' + val.Id + '" stlye="height: 20px !important;">Eintrag Entfernen</a>' + 
+				   '<a role="button" class="btn btn-danger btn-block" href="http://192.168.1.100:5000/admin/remove?id=' + val.Id + '" stlye="height: 20px !important;">Eintrag Entfernen</a>' + 
                                  '</div>');
              });
            });

@@ -68,7 +68,7 @@ client.on('message', onMessageHandler);
 //Handlers
 
 function onConnectedHandler (addr, port) {
-  hass.states.get('switch', 'psock1').then(function(switchState) {
+  hass.states.get(process.env.HASS_FAN_ENTITYTYPE, process.env.HASS_FAN_ENTITYID).then(function(switchState) {
     console.log("[HASSIO] Ventilator: " + switchState.state);
   }).catch(function(e) {
     throw e;
@@ -88,12 +88,14 @@ function onMessageHandler (target, context, msg, self) {
   {
     console.log("Custom Reward detected! Id:" + context["custom-reward-id"]);
 
-    hass.states.get('switch', 'psock1').then(function(switchState) {
+    hass.states.get(process.env.HASS_FAN_ENTITYTYPE, process.env.HASS_FAN_ENTITYID).then(function(switchState) {
       console.log("[HASSIO] Ventilator: " + switchState.state);
       if(switchState)
       {
-        hass.services.call('turn_off', 'switch', 'psock1');
+        hass.services.call('turn_off', process.env.HASS_FAN_ENTITYTYPE, process.env.HASS_FAN_ENTITYID);
         client.say(process.env.CHANNEL_NAME, "Lasset Robby schwitzen! Der Ventilator ist nun AUS!");
+
+       setTimeout(function(){ hass.services.call('turn_on', process.env.HASS_FAN_ENTITYTYPE, process.env.HASS_FAN_ENTITYID); }, 60000 * 2);
       }
       else
       {
@@ -126,7 +128,6 @@ function onMessageHandler (target, context, msg, self) {
     return;
     case "ventilator":
     {
-
       if(commandArgs.length === 1)
       {
         if(context.username === "derpydoom_" || context.username === "dj_robby_")
@@ -146,7 +147,7 @@ function onMessageHandler (target, context, msg, self) {
           }
         }
       }
-      hass.states.get('switch', 'psock1').then(function(switchState) {
+      hass.states.get(process.env.HASS_FAN_ENTITYTYPE, process.env.HASS_FAN_ENTITYID).then(function(switchState) {
         if(switchState.state === "on")
         {
           client.say(process.env.CHANNEL_NAME, "@" + context.username + ", der Ventilator ist aktuell an.");

@@ -35,7 +35,7 @@ app.get("/admin/remove", (req, res) => {
   var songId = req.query.id;
   console.log("[  DB  ] Wunsch mit der ID " + songId + " wurde entfernt.");
   db.RemoveFromDatabase(songId);
-  res.redirect(301, 'http://192.168.1.61:5000/admin')
+  res.redirect(301, 'http://192.168.1.100:5000/admin')
 });
 
 app.get('/songs', async (req, res) => {
